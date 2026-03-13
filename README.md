@@ -89,9 +89,3 @@ I'm a team-oriented leader who finds balance in high-stakes sports and theatrica
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Heimao-c&layout=compact&theme=radical)
 
 ---
-
-### 📫 Contact
-
-- **GitHub**: [@Heimao-c](https://github.com/Heimao-c)
-
-
