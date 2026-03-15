@@ -8,9 +8,9 @@ Building autonomous systems with physical intuition and real-time precision. Und
 
 ---
 <p align="center">
-  <img src="https://picsum.photos/seed/frankxu/800/300" alt="Daily Engineering Inspiration" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+  <img src="https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=zh-CN" alt="Daily Engineering Inspiration" style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
   <br>
-  <i>"A daily random photo."</i>
+  <i>"Daily inspiration from Bing."</i>
 </p>
 
 ---
