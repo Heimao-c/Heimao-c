@@ -8,7 +8,7 @@ Building autonomous systems with physical intuition and real-time precision. Und
 
 ---
 <p align="center">
-  <img src="https://bing.img.run/rand_1366.php" width="500" alt="Daily Photo" style="border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/niumoo/bing-wallpaper/main/bing-wallpaper.jpg" width="500" alt="Daily Photo" style="border-radius: 8px;">
   <br>
   <i>"Daily inspiration from Bing."</i>
 </p>
