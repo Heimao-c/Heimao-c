@@ -12,33 +12,32 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # 关键：强制切换到 main 分支的最前端
-          ref: main
 
-      - name: Force Sync and Update
+      - name: Update and Push README
         run: |
-          # 1. 身份配置
+          # 1. 配置机器人身份
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 2. 暴力同步：强制让本地和云端完全一致
-          git fetch origin main
-          git reset --hard origin/main
+          # 2. 强制切换到 main 分支，并同步云端最新代码（化解 rejected 冲突的第一道防线）
+          git checkout main
+          git pull origin main --rebase
           
-          # 3. 生成随机种子并修改
+          # 3. 替换 README 中的随机种子为当前时间戳
           SEED=$(date +%s)
           sed -i "s/random=[^\"]*/random=${SEED}/g" README.md
           
-          # 4. 提交并“暴力”推送
+          # 4. 提交并推送
           git add README.md
-          # 检查是否有改动，防止空提交报错
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "No changes detected, skipping commit."
           else
             git commit -m "chore: update daily photo seed"
-            # 使用 --force 强制覆盖云端，彻底解决 rejected 问题
-            git push origin main --force
+            # 5. 提交前再拉取一次，防止在刚才的几秒钟内云端发生变化（化解冲突的最后一道防线）
+            git pull origin main --rebase
+            git push origin main
           fi
