@@ -14,20 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # 获取完整历史
+          fetch-depth: 0
 
-      - name: Update README with Force Logic
+      - name: Sync, Update and Force Push
         run: |
-          # 1. 配置身份
+          # 1. 设置身份
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 2. 强制同步云端最新状态，消除 [rejected] 隐患
+          # 2. 强制拉取云端最新改动并对齐，消除 rejected 隐患
           git fetch origin main
-          git reset --hard origin main
+          git reset --hard origin/main
           
-          # 3. 修改随机种子（使用时间戳）
+          # 3. 产生新的随机种子（时间戳）
           SEED=$(date +%s)
+          # 精准替换 random= 后的参数
           sed -i "s/random=[^\"]*/random=${SEED}/g" README.md
           
           # 4. 提交并强制推送
@@ -36,6 +37,6 @@ jobs:
             echo "No changes detected"
           else
             git commit -m "chore: update daily photo seed"
-            # 使用 --force 强制覆盖云端，彻底解决同步问题
+            # 既然没有分支保护，--force 是一劳永逸的方案
             git push origin main --force
           fi
