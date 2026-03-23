@@ -15,28 +15,30 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # 关键：强制切换到 main 分支的最前端
+          ref: main
 
-      - name: Sync, Update and Force Push
+      - name: Force Sync and Update
         run: |
-          # 1. 设置身份
+          # 1. 身份配置
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 2. 强制拉取云端最新改动并对齐，消除 rejected 隐患
+          # 2. 暴力同步：强制让本地和云端完全一致
           git fetch origin main
           git reset --hard origin/main
           
-          # 3. 产生新的随机种子（时间戳）
+          # 3. 生成随机种子并修改
           SEED=$(date +%s)
-          # 精准替换 random= 后的参数
           sed -i "s/random=[^\"]*/random=${SEED}/g" README.md
           
-          # 4. 提交并强制推送
+          # 4. 提交并“暴力”推送
           git add README.md
+          # 检查是否有改动，防止空提交报错
           if git diff --staged --quiet; then
-            echo "No changes detected"
+            echo "No changes to commit"
           else
             git commit -m "chore: update daily photo seed"
-            # 既然没有分支保护，--force 是一劳永逸的方案
+            # 使用 --force 强制覆盖云端，彻底解决 rejected 问题
             git push origin main --force
           fi
