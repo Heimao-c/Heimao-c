@@ -5,11 +5,16 @@ on:
     - cron: '0 0 * * *' # 每天北京时间早上8点执行
   workflow_dispatch: # 允许你手动点击运行测试
 
+# 关键修复 1：明确授予机器人“写入权限”
+permissions:
+  contents: write
+
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      # 关键修复 2：升级到 v4 以消除 Node.js 20 警告
+      - uses: actions/checkout@v4
 
       - name: Generate Random Seed
         id: seed
@@ -17,14 +22,19 @@ jobs:
 
       - name: Update README
         run: |
-          # 使用 sed 替换 README 中的占位符为当前时间戳（这会改变 URL）
-          # 我们把 random= 后面的一串数字换成当前时间戳
-          sed -i "s/random=[^\" ]*/random=${{ steps.seed.outputs.STR }}/g" README.md
+          # 确保 README 里的占位符匹配：random=...
+          # 这条命令会搜索 random= 后面直到引号结束的内容并替换
+          sed -i "s/random=[^\"]*/random=${{ steps.seed.outputs.STR }}/g" README.md
 
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "chore: update daily photo seed" || exit 0
-          git push
+          # 只有在有变动时才提交，防止报错
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update daily photo seed"
+            git push
+          fi
