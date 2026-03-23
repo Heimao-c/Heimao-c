@@ -2,8 +2,8 @@ name: Update Daily Photo Seed
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天北京时间早上8点执行
-  workflow_dispatch: # 允许你手动点击运行测试
+    - cron: '0 0 * * *' 
+  workflow_dispatch: 
 
 permissions:
   contents: write
@@ -12,10 +12,10 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      # 1. 升级到 v4 并获取全部历史记录，防止合并冲突
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          # 获取所有历史记录，这对解决冲突至关重要
+          fetch-depth: 0
 
       - name: Generate Random Seed
         id: seed
@@ -23,20 +23,14 @@ jobs:
 
       - name: Update README
         run: |
-          # 精准匹配 random= 后的值进行替换
+          # 这一步会把 random= 后面直到双引号的内容替换为当前时间戳
           sed -i "s/random=[^\"]*/random=${{ steps.seed.outputs.STR }}/g" README.md
 
-      - name: Commit and Push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "chore: update daily photo seed"
-            # 核心修复：先用 rebase 模式拉取最新代码，解决 [rejected] 报错
-            git pull --rebase origin main
-            git push origin main
-          fi
+      - name: Commit & Push Changes
+        # 使用专门处理自动提交的插件，它会自动处理 pull/rebase 逻辑
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update daily photo seed"
+          branch: main
+          # 如果有冲突，它会尝试重新拉取
+          push_options: '--force'
