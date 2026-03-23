@@ -5,7 +5,6 @@ on:
     - cron: '0 0 * * *' # 每天北京时间早上8点执行
   workflow_dispatch: # 允许你手动点击运行测试
 
-# 关键修复 1：明确授予机器人“写入权限”
 permissions:
   contents: write
 
@@ -13,8 +12,10 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      # 关键修复 2：升级到 v4 以消除 Node.js 20 警告
+      # 1. 升级到 v4 并获取全部历史记录，防止合并冲突
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
 
       - name: Generate Random Seed
         id: seed
@@ -22,8 +23,7 @@ jobs:
 
       - name: Update README
         run: |
-          # 确保 README 里的占位符匹配：random=...
-          # 这条命令会搜索 random= 后面直到引号结束的内容并替换
+          # 精准匹配 random= 后的值进行替换
           sed -i "s/random=[^\"]*/random=${{ steps.seed.outputs.STR }}/g" README.md
 
       - name: Commit and Push
@@ -31,10 +31,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          # 只有在有变动时才提交，防止报错
+          
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             git commit -m "chore: update daily photo seed"
-            git push
+            # 核心修复：先用 rebase 模式拉取最新代码，解决 [rejected] 报错
+            git pull --rebase origin main
+            git push origin main
           fi
