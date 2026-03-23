@@ -14,23 +14,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # 获取所有历史记录，这对解决冲突至关重要
-          fetch-depth: 0
+          fetch-depth: 0 # 获取完整历史
 
-      - name: Generate Random Seed
-        id: seed
-        run: echo "STR=$(date +%s)" >> $GITHUB_OUTPUT
-
-      - name: Update README
+      - name: Update README with Force Logic
         run: |
-          # 这一步会把 random= 后面直到双引号的内容替换为当前时间戳
-          sed -i "s/random=[^\"]*/random=${{ steps.seed.outputs.STR }}/g" README.md
-
-      - name: Commit & Push Changes
-        # 使用专门处理自动提交的插件，它会自动处理 pull/rebase 逻辑
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: update daily photo seed"
-          branch: main
-          # 如果有冲突，它会尝试重新拉取
-          push_options: '--force'
+          # 1. 配置身份
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 2. 强制同步云端最新状态，消除 [rejected] 隐患
+          git fetch origin main
+          git reset --hard origin main
+          
+          # 3. 修改随机种子（使用时间戳）
+          SEED=$(date +%s)
+          sed -i "s/random=[^\"]*/random=${SEED}/g" README.md
+          
+          # 4. 提交并强制推送
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "No changes detected"
+          else
+            git commit -m "chore: update daily photo seed"
+            # 使用 --force 强制覆盖云端，彻底解决同步问题
+            git push origin main --force
+          fi
