@@ -26,7 +26,7 @@ Building autonomous systems with physical intuition and real-time precision. Und
   <img src="https://img.shields.io/badge/latex-%23008080.svg?style=for-the-badge&logo=latex&logoColor=white" />
 </p>
 
-* **Specialties**: Cross-platform Backend Tooling (Go/Python), Mathematical Scripting, Academic Typesetting.
+* **Specialties**: Cross-platform Backend Tooling (Go/Python), Mathematical Scripting, Academic Typesetting. 
 
 **🤖 Robotics & Embedded Systems**
 <p align="left">
