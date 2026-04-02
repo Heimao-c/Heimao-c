@@ -47,14 +47,14 @@ Building autonomous systems with physical intuition and real-time precision. Und
   <img src="https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white" />
 </p>
 
-* **Deep Learning**: **Spiking Neural Networks (SNN/)**, Autoencoders, Computer Vision Deployment.
+* **Deep Learning**: **Spiking Neural Networks (SNN)**, Autoencoders, Computer Vision Deployment.
 * **Classic Algorithms**: SVM (Linear/Gaussian), AdaBoost, Data Normalization & Analysis.
   
 ---
 
 ### 🚀 Featured Engineering Projects
 
-* **[UAV-SNN-Positioning](https://github.com/Heimao-c/UAV-SNN-RealTime-Localization)**: Real-time scene recognition for Tello drones using **Spiking Neural Networks (SNN)**. 
+* **[UAV-SNN-VPR](https://github.com/Heimao-c/UAV-SNN-VPR)**: A vision-only real-time VPR for Tello drones using **Spiking Neural Networks (SNN)**. 
     * *Highlight*: Built a high-speed GPU computing link achieving **90%+ accuracy**.
 * **[8-DOF UAV Dynamics](https://github.com/Heimao-c/UAV-Suspended-Payload-Dynamics)**: Mathematical modeling of quadrotors with suspended payloads. 
     * *Highlight*: Derived an 8-DOF coupled model via **Newton-Euler equations** and validated with Motion Capture data.
@@ -86,6 +86,6 @@ I'm a team-oriented leader who finds balance in high-stakes sports and theatrica
 
 ### 📊 GitHub Insights
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Heimao-c&layout=compact&theme=radical)
+![Repos per Language](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Heimao-c&theme=github&exclude=Unknown)
 
 ---
