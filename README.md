@@ -8,7 +8,7 @@ Building autonomous systems with physical intuition and real-time precision. Und
 
 ---
 <p align="center">
-  <img src="https://picsum.photos/500/200?random=1775352557" width="500" alt="Daily Photo" style="border-radius: 8px;">
+  <img src="https://picsum.photos/500/200?random=1775438966" width="500" alt="Daily Photo" style="border-radius: 8px;">
   <br>
   <i>"Daily inspiration from picsum."</i>
 </p>
