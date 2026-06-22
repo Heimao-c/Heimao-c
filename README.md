@@ -7,6 +7,7 @@
 Building autonomous systems with physical intuition and real-time precision. Undergraduate at **Southern University of Science and Technology (SUSTech)**.
 
 ---
+<meta name="referrer" content="no-referrer">
 <p align="center">
   <img src="https://picsum.photos/500/200?random=1782126206" width="500" alt="Daily Photo" style="border-radius: 8px;">
   <br>
