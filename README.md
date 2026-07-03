@@ -1,6 +1,6 @@
-# Hi there, I'm Frank (Xu Yixiang) 👋 🚁💻🎭
+# Hi there, I'm Frank (Xu Yixiang) 👋 💻🦾🎭
 
-**UAV Control Enthusiast | Embedded Systems Developer | SNN Explorer**
+**Autonomous Systems Engineer | Robotics Developer | Embedded Systems**
 
 > "The difference between a drone and a brick is about 1,000 lines of C code and a very stable PID loop." 🚁✨
 
@@ -40,6 +40,7 @@ Building autonomous systems with physical intuition and real-time precision. Und
 
 * **Control & Modeling**: 8-DOF Coupled Dynamics Modeling (**Newton-Euler**), PID/LQR Control.
 * **Hardware Interfacing**: **NRF24L01** Wireless Comm, **ATKP Protocol** Design, Circuit Simulation (**Multisim**).
+* **Robotics**: **Kinova Gen3 Lite** manipulator control, **RealSense D435** depth perception, visual servoing, hand-eye calibration.
 
 **🧠 AI & Machine Learning**
 <p align="left">
@@ -55,12 +56,12 @@ Building autonomous systems with physical intuition and real-time precision. Und
 
 ### 🚀 Featured Engineering Projects
 
-* **[UAV-SNN-VPR](https://github.com/Heimao-c/UAV-SNN-VPR)**: A vision-only real-time VPR for Tello drones using **Spiking Neural Networks (SNN)**. 
-    * *Highlight*: Built a high-speed GPU computing link achieving **90%+ accuracy**.
-* **[8-DOF UAV Dynamics](https://github.com/Heimao-c/UAV-Suspended-Payload-Dynamics)**: Mathematical modeling of quadrotors with suspended payloads. 
-    * *Highlight*: Derived an 8-DOF coupled model via **Newton-Euler equations** and validated with Motion Capture data.
-* **[STM32-MiniFly-Telemetry](https://github.com/Heimao-c/STM32-MiniFly-Altitude-Telemetry)**: Flight control system on **STM32 & FreeRTOS**. 
+* **[gen3_lite_hand_follow](https://github.com/Heimao-c/gen3_lite_hand_follow)**: ROS Noetic / Python3 project for **Kinova Gen3 Lite** with **RealSense D435** eye-in-hand hand following. 
+    * *Highlight*: Built a full pipeline from MediaPipe hand detection → aligned depth 3D reconstruction → One Euro filtering → visual servoing with velocity commands to the manipulator. Includes gesture-based gripper control.
+* **[STM32-MiniFly-Altitude-Telemetry](https://github.com/Heimao-c/STM32-MiniFly-Altitude-Telemetry)**: Flight control system on **STM32 & FreeRTOS**. 
     * *Highlight*: Engineered a custom **500ms-cycle telemetry link** for real-time laser altitude display on OLED.
+* **[Drone-Suspended-System-Modeling](https://github.com/Heimao-c/Drone-Suspended-System-Modeling)**: Mathematical modeling of quadrotors with suspended payloads.
+    * *Highlight*: Derived an 8-DOF coupled model via **Newton-Euler equations** and validated with Motion Capture data.
 * **[SUSTech-Grade-Fetcher](https://github.com/Heimao-c/SUSTech-Grade-Fetcher)**: A high-performance Python/Go tool for automated grade & ranking retrieval.
 
 ---
