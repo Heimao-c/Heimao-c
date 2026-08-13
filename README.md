@@ -2,6 +2,8 @@
 
 **Software Systems | Embedded Computing | Robotics**
 
+> "The distance between a perception demo and a working robot is measured in frames, latency, and safety limits." 🤖
+
 I’m an undergraduate in the **AIM College at Southern University of Science and Technology (SUSTech)**, working across software tools, embedded and real-time systems, machine learning, and robot perception. My projects range from developer utilities and automation to UAV dynamics, control, and vision-based manipulation.
 
 ---
