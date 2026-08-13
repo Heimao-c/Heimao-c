@@ -1,10 +1,8 @@
 # Hi there, I'm Frank (Xu Yixiang) 👋 💻🦾🎭
 
-**Undergraduate Researcher | Systems & AI Developer | Robotics Enthusiast**
+**Software Systems | Embedded Computing | Robotics**
 
-> "The difference between a drone and a brick is about 1,000 lines of C code and a very stable PID loop." 🚁✨
-
-Building practical software and intelligent systems with an interest in real-time computing, machine learning, and robotics. Undergraduate at **Southern University of Science and Technology (SUSTech)**.
+I’m an undergraduate in the **AIM College at Southern University of Science and Technology (SUSTech)**, working across software tools, embedded and real-time systems, machine learning, and robot perception. My projects range from developer utilities and automation to UAV dynamics, control, and vision-based manipulation.
 
 ---
 <meta name="referrer" content="no-referrer">
@@ -58,6 +56,8 @@ Building practical software and intelligent systems with an interest in real-tim
 
 ### 🚀 Featured Engineering Projects
 
+* **[cc-indicator](https://github.com/Heimao-c/cc-indicator)**: A cross-platform desktop tray tool for monitoring and organizing **Codex CLI** and **Claude Code** sessions.
+    * *Highlight*: Integrates local session detection, hooks, SSH session discovery, native desktop interfaces, and multi-platform release packaging while keeping session data on the local machine.
 * **[gen3_lite_hand_follow](https://github.com/Heimao-c/gen3_lite_hand_follow)**: ROS Noetic / Python3 project for **Kinova Gen3 Lite** with **RealSense D435** eye-in-hand hand following. 
     * *Highlight*: Built a full pipeline from MediaPipe hand detection → aligned depth 3D reconstruction → One Euro filtering → visual servoing with velocity commands to the manipulator. Includes gesture-based gripper control.
 * **[STM32-MiniFly-Altitude-Telemetry](https://github.com/Heimao-c/STM32-MiniFly-Altitude-Telemetry)**: Flight control system on **STM32 & FreeRTOS**. 
