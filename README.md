@@ -9,7 +9,7 @@ I’m an undergraduate in the **AIM College at Southern University of Science an
 ---
 <meta name="referrer" content="no-referrer">
 <p align="center">
-  <img src="https://picsum.photos/seed/20260827/500/200" width="500" alt="Daily Photo" style="border-radius: 8px;">
+  <img src="https://picsum.photos/seed/20260828/500/200" width="500" alt="Daily Photo" style="border-radius: 8px;">
   <br>
   <i>"Daily inspiration from picsum."</i>
 </p>
